@@ -1,8 +1,7 @@
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 021](https://user-images.githubusercontent.com/76467751/214298923-f78a765b-b109-4104-ab77-c162680c7872.png)
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 022](https://user-images.githubusercontent.com/76467751/214298956-28fbd72f-dcd4-4957-b728-dcfcd8a9cefb.png)
 
 # Introduction
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 001](https://user-images.githubusercontent.com/76467751/214295716-a55f5d12-b804-4f9a-b3b6-2bc915504987.png)
 
 Our project is a form of score predictor. Our project is a helping tool for hiring committees and HR department. It evaluates an employee over multiple factors. Our model is a culmination of four individual models. We run four different models, namely Attrition Classifier, Turnover Classifier, Absenteeism Classifier and Salary Predictor. We use different methods to calculate all four values. All individual values are graded out of ten while the overall score is graded out of 100.
 
@@ -12,7 +11,168 @@ We have made a comprehensive tool to judge the performance of an employee or a f
 
 The following document is a detailed description of the working of our project along with info about the dataset and GUI working.
 
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 001](https://user-images.githubusercontent.com/76467751/214295716-a55f5d12-b804-4f9a-b3b6-2bc915504987.png)
+Technology Used – Pre-processing
+
+This project explores and utilizes a plethora of pre-processing tools and techniques to pipeline and ready the data to be fed into the machine learning model and neural network used in the project. Following is a list of the pre-processing tools used along with the purpose it serves in pipelining the data:
+
+1. Label Encoding: 
+
+Label encoding is one of the most essential steps of pre-processing. Our model is build using basic mathematical tools available in python, but even otherwise all models are build using mathematical tools; however, input data may also be in the form of strings and hence label encoding helps us to map **strings to integer values.** 
+
+Alternative to label encoding is **mapping**. We can manually map strings to their respective integer values. But label encoding provides an easy way to encode literals to integers and hence we have used Label encoding.
+
+Label encoding works by first finding all the unique values of the column passed. It then compares the values **lexicographically**, arranges it in ascending order and assigns numbers from 0 onwards. Following are a few screenshots of where we have used Label encoding:
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 002](https://user-images.githubusercontent.com/76467751/214296222-cea91469-ecac-4497-a516-aa6d47db1ef4.png)
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 003](https://user-images.githubusercontent.com/76467751/214296277-137fe96f-0c8f-4700-b2f4-f69d863cde7f.png)
+
+
+
+
+
+
+
+1. Missingno:
+
+Missingno is a package used to **find missing values** or **null values**. We have used the **bar** function to **plot** the values of all our features. From the bar plot it was evident that we did not have any missing or null values and hence we did not have to handle them.
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 004](https://user-images.githubusercontent.com/76467751/214296312-a9e6de26-0121-4bea-ab74-9e22f35952d5.png)
+
+
+1. Countplot:
+
+Present in the **seaborn package**, we used countplot to plot the count of occurrences of **unique values** of a feature. We have used it to view **class balancing**. At times when classification classes had uneven datasets, we have applied yet another pre-processing technique called **SMOTE** to balance the datasets as discussed later.
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 005](https://user-images.githubusercontent.com/76467751/214296357-85d05b48-5dc6-411f-92d9-88376aaaf45c.png)![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 006](https://user-images.githubusercontent.com/76467751/214296450-d5e29636-e40d-4a9b-992d-abac859e5ed3.png)
+
+
+
+
+
+
+1. Heatmap (of correlation):
+
+Present in the **seaborn package**, heatmap presents a comprehensive understanding of data. We used the heatmap to plot the **correlation of independent features**. Features having higher correlation were dropped from the dataset itself. We could have dropped those features from the python code also, but that would have hindered the code from executing more than once on a few platforms and IDEs. A correlation heatmap looks like the following:
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 007](https://user-images.githubusercontent.com/76467751/214298492-18a75689-a0ce-44e1-bd43-13f9a5d5b44a.png)
+
+1. SMOTE (Synthetic Minority Oversampling Technique):
+
+**SMOTE** is a technique to **balance classes** in **classification problems**. We could have balanced classed by simply reducing the number of majority samples but that could lead to **under sampling**. We could also have just duplicated the minority samples but that reduces the efficiency and often leads to **overfitting**. 
+
+Hence, we used SMOTE. This method **synthetically generates** samples of the minority class. What it means is that, it creates a **random point** (random input variables), performs **K Nearest Neighbour (KNN) algorithm** and sees in which class does this random point belong. If the random point belongs to the minority class, then it adds that point to the sample. If the random point belongs to the majority class, then it simply discards the random point and takes another random point. This method keeps on taking random points until and unless both classes have become **balanced**. 
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 008](https://user-images.githubusercontent.com/76467751/214298512-79c6b2e8-0139-41c4-b30a-3d14ca682a5c.png)
+
+
+
+`		`**Before SMOTE**			      **After SMOTE**
+
+![](Aspose.Words.0c5aa5b8-8363-4085-bc25-097709bdd400.005.png)![](Aspose.Words.0c5aa5b8-8363-4085-bc25-097709bdd400.006.png)
+
+1. Standard Scalar:
+
+This pre-processing technique is used to **standardize** the input elements.  
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 009](https://user-images.githubusercontent.com/76467751/214298540-f365a8a5-bc72-4eaf-bc59-8b7e66b15c4f.png)
+
+1. Outlier Removal:
+
+This function is made to **remove outliers** from the data using the quantile function to retain data of a particular **inter-quartile range**.
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 010](https://user-images.githubusercontent.com/76467751/214298582-fabb5f18-7579-4980-89a4-61fa4c87fb2f.png)
+
+
+
+Technology Used – Model Training
+
+While most of the project is **developed base-up from scratch** using **basic python libraries** such as **NumPy** and **Pandas**, there are a few areas in which we employed other frameworks such as **TensorFlow** and **Keras** to implement advanced neural networks. Details of the technology used to develop models of individual components are as follows:
+
+1. Salary: 
+
+Salary being a continuous integer output requires regression. Normal multiple regression of various degrees yielded unsatisfactory results and hence we resolved to use neural networks. We developed a **Dense convolutional neural network**. The layers of the network are summarised in the diagram below:
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 011](https://user-images.githubusercontent.com/76467751/214298604-bdfbe794-a767-489f-b227-18b8f369356b.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Number of nodes in the diagram have been scaled down. In the actual network, the layers from first to last output consists of **256, 128, 64, 32 and 1 node** respectively. Each node has a **‘uniform’ kernel initializer** and **‘relu’ activation** while the last output Layer node has a **‘linear’ activation**.
+
+After each layer there is a **dropout of 5%** to manage the edges of the network. The final compilation of the network is done through **‘adam’ optimizer** and **‘mean squared error’** **loss metric**. The network is formed with **dense** **connections** as can be seen from the diagram above.
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 012](https://user-images.githubusercontent.com/76467751/214298624-ef70e5fe-a4ea-4186-9ff5-bc57262ea695.png)
+
+1. Attrition: 
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 013](https://user-images.githubusercontent.com/76467751/214298662-76663b96-0147-4d8c-91c7-3c53d468978a.png)As the output is binary in nature, hence **Logistic Regression** was employed. Many activation formulas were tested for most optimal output. The highest test accuracy was achieved by the **Activation Formula:**
+
+y=11+e-z
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 014](https://user-images.githubusercontent.com/76467751/214298684-0166c45e-ce57-4399-b715-4a6ad5215c25.png)Where,
+
+z=β0+β1x1+β2x2+⋯+βnxn
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 015](https://user-images.githubusercontent.com/76467751/214298704-aa115087-064d-4055-96a2-525657d40700.png)
+
+1. Absenteeism:
+
+As absenteeism represents the number of leaves an employee takes, the output can neither be considered continuous nor binary. Hence, we divided the output into different classes making this a multiclass classification problem. We used the same **Logistic Regression** with the same activation formula as above. However, we had to **create dummies** of the output feature effectively giving us 4 output features for the four different classes.
+
+**Activation Formula:** y=11+e-z
+
+Where, z=β0+β1x1+β2x2+⋯+βnxn
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 016](https://user-images.githubusercontent.com/76467751/214298750-d0a51c78-4717-47ad-b9ae-7958d7beeb68.png)![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 017](https://user-images.githubusercontent.com/76467751/214298818-622c1a5d-42b1-46fd-95d8-3b288f8f9d85.png)
+
+1. Turnover:
+
+The turnover dataset has a binary output; however, the relation was found out to be non-linear. To tackle this, we employed **Multiple Logistic Regression of 3rd Degree**. Activation formula remains the same as for the model above, however the complexity increased due to the non-linear nature. We also found the accuracy to fluctuate due to higher degree and hence employed **Ridge Regularization** to combat those fluctuations to get the best overall accuracy.
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 018](https://user-images.githubusercontent.com/76467751/214298851-851b8946-9da8-4d54-8fd3-fad76dfd1e1c.png)
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 019](https://user-images.githubusercontent.com/76467751/214298872-f290de8f-65e9-4bd0-b194-5738741dd360.png)
+
+Finally, for training the models, we had to find the **most optimal hyperparameters, learning rates and repetitions**. To do this we used **Nvidia’s GPU acceleration** using **CUDA** to run all the models hundreds of thousands of times with varying parameters. The **Beta values** of the model with best test accuracy and least error distance was stored separately for future use.
+
+We also used **functions** to loop over **various values of n** and **learning rates** to find the pair with **best outputs**. A glimpse of the function created is as follows:
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 020](https://user-images.githubusercontent.com/76467751/214298905-3c2fb558-1513-4fe5-afa4-056d6bf00f6d.png)
+
+
+A summary of the above details is given in the table below:
+
+|S No.|Dataset Name|Output Type|Model Used|Details|
+| :-: | :-: | :-: | :-: | :-: |
+|1.|Salary|<p>Continuous</p><p>Number</p>|<p>Convolutional</p><p>` `Neural Network</p><p>(TensorFlow)</p><p>(Keras)</p>|<p></p><p>Hidden layer nodes: </p><p>**256 à128 à 64 à 32 à 16**</p><p>Connection Type: **Dense**</p><p>Optimizer: **adam**</p><p>Loss Metric: **Mean Square Error**</p><p>Max Epochs**: 100 (Early Stopping)**</p><p></p>|
+|2.|Attrition|Binary|<p>Logistic Regression</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: **50000**</p><p>Learning Rate: **0.0001**</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z***<br></p>|
+|3.|Absenteeism|Binary|<p>Multiclass </p><p>Logistic Regression</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: </p><p>Learning Rate:</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z*<br></p>|
+|4.|Turnover|Binary|<p>Logistic Regression </p><p>of 3rd Degree</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: </p><p>Learning Rate:</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z*<br></p>|
+
+
+
+Technology Used – Score Predictor GUI
+
+Our project utilises html, CSS and JavaScript to build the front end. We have used PyCharm to make the server to host the website on our local machine. We used Bootstrap to build the basic GUI form which is minimalistic and yet elegant to view. After that we made our own JavaScript functions to calculate the scores. The scores have been calculated using the input values of the form and the beta values of the four models. 
+
+We do not import the model itself as importing the model would make the site heavy and incompatible with browsers incapable or running Python or .h5 compiled model files. Furthermore, we have made models using mathematical functions and hence making .h5 model file is not possible as that is a feature inbuilt into keras.
+
+Following are screenshots of our output form and GUI:
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 021](https://user-images.githubusercontent.com/76467751/214298923-f78a765b-b109-4104-ab77-c162680c7872.png)
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 022](https://user-images.githubusercontent.com/76467751/214298956-28fbd72f-dcd4-4957-b728-dcfcd8a9cefb.png)
 
 Dataset Description: Attrition
 
@@ -269,168 +429,7 @@ Feature Description and purpose: Salary
 
 
 
-Technology Used – Pre-processing
 
-This project explores and utilizes a plethora of pre-processing tools and techniques to pipeline and ready the data to be fed into the machine learning model and neural network used in the project. Following is a list of the pre-processing tools used along with the purpose it serves in pipelining the data:
-
-1. Label Encoding: 
-
-Label encoding is one of the most essential steps of pre-processing. Our model is build using basic mathematical tools available in python, but even otherwise all models are build using mathematical tools; however, input data may also be in the form of strings and hence label encoding helps us to map **strings to integer values.** 
-
-Alternative to label encoding is **mapping**. We can manually map strings to their respective integer values. But label encoding provides an easy way to encode literals to integers and hence we have used Label encoding.
-
-Label encoding works by first finding all the unique values of the column passed. It then compares the values **lexicographically**, arranges it in ascending order and assigns numbers from 0 onwards. Following are a few screenshots of where we have used Label encoding:
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 002](https://user-images.githubusercontent.com/76467751/214296222-cea91469-ecac-4497-a516-aa6d47db1ef4.png)
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 003](https://user-images.githubusercontent.com/76467751/214296277-137fe96f-0c8f-4700-b2f4-f69d863cde7f.png)
-
-
-
-
-
-
-
-1. Missingno:
-
-Missingno is a package used to **find missing values** or **null values**. We have used the **bar** function to **plot** the values of all our features. From the bar plot it was evident that we did not have any missing or null values and hence we did not have to handle them.
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 004](https://user-images.githubusercontent.com/76467751/214296312-a9e6de26-0121-4bea-ab74-9e22f35952d5.png)
-
-
-1. Countplot:
-
-Present in the **seaborn package**, we used countplot to plot the count of occurrences of **unique values** of a feature. We have used it to view **class balancing**. At times when classification classes had uneven datasets, we have applied yet another pre-processing technique called **SMOTE** to balance the datasets as discussed later.
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 005](https://user-images.githubusercontent.com/76467751/214296357-85d05b48-5dc6-411f-92d9-88376aaaf45c.png)![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 006](https://user-images.githubusercontent.com/76467751/214296450-d5e29636-e40d-4a9b-992d-abac859e5ed3.png)
-
-
-
-
-
-
-1. Heatmap (of correlation):
-
-Present in the **seaborn package**, heatmap presents a comprehensive understanding of data. We used the heatmap to plot the **correlation of independent features**. Features having higher correlation were dropped from the dataset itself. We could have dropped those features from the python code also, but that would have hindered the code from executing more than once on a few platforms and IDEs. A correlation heatmap looks like the following:
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 007](https://user-images.githubusercontent.com/76467751/214298492-18a75689-a0ce-44e1-bd43-13f9a5d5b44a.png)
-
-1. SMOTE (Synthetic Minority Oversampling Technique):
-
-**SMOTE** is a technique to **balance classes** in **classification problems**. We could have balanced classed by simply reducing the number of majority samples but that could lead to **under sampling**. We could also have just duplicated the minority samples but that reduces the efficiency and often leads to **overfitting**. 
-
-Hence, we used SMOTE. This method **synthetically generates** samples of the minority class. What it means is that, it creates a **random point** (random input variables), performs **K Nearest Neighbour (KNN) algorithm** and sees in which class does this random point belong. If the random point belongs to the minority class, then it adds that point to the sample. If the random point belongs to the majority class, then it simply discards the random point and takes another random point. This method keeps on taking random points until and unless both classes have become **balanced**. 
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 008](https://user-images.githubusercontent.com/76467751/214298512-79c6b2e8-0139-41c4-b30a-3d14ca682a5c.png)
-
-
-
-`		`**Before SMOTE**			      **After SMOTE**
-
-![](Aspose.Words.0c5aa5b8-8363-4085-bc25-097709bdd400.005.png)![](Aspose.Words.0c5aa5b8-8363-4085-bc25-097709bdd400.006.png)
-
-1. Standard Scalar:
-
-This pre-processing technique is used to **standardize** the input elements.  
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 009](https://user-images.githubusercontent.com/76467751/214298540-f365a8a5-bc72-4eaf-bc59-8b7e66b15c4f.png)
-
-1. Outlier Removal:
-
-This function is made to **remove outliers** from the data using the quantile function to retain data of a particular **inter-quartile range**.
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 010](https://user-images.githubusercontent.com/76467751/214298582-fabb5f18-7579-4980-89a4-61fa4c87fb2f.png)
-
-
-
-Technology Used – Model Training
-
-While most of the project is **developed base-up from scratch** using **basic python libraries** such as **NumPy** and **Pandas**, there are a few areas in which we employed other frameworks such as **TensorFlow** and **Keras** to implement advanced neural networks. Details of the technology used to develop models of individual components are as follows:
-
-1. Salary: 
-
-Salary being a continuous integer output requires regression. Normal multiple regression of various degrees yielded unsatisfactory results and hence we resolved to use neural networks. We developed a **Dense convolutional neural network**. The layers of the network are summarised in the diagram below:
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 011](https://user-images.githubusercontent.com/76467751/214298604-bdfbe794-a767-489f-b227-18b8f369356b.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Number of nodes in the diagram have been scaled down. In the actual network, the layers from first to last output consists of **256, 128, 64, 32 and 1 node** respectively. Each node has a **‘uniform’ kernel initializer** and **‘relu’ activation** while the last output Layer node has a **‘linear’ activation**.
-
-After each layer there is a **dropout of 5%** to manage the edges of the network. The final compilation of the network is done through **‘adam’ optimizer** and **‘mean squared error’** **loss metric**. The network is formed with **dense** **connections** as can be seen from the diagram above.
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 012](https://user-images.githubusercontent.com/76467751/214298624-ef70e5fe-a4ea-4186-9ff5-bc57262ea695.png)
-
-1. Attrition: 
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 013](https://user-images.githubusercontent.com/76467751/214298662-76663b96-0147-4d8c-91c7-3c53d468978a.png)As the output is binary in nature, hence **Logistic Regression** was employed. Many activation formulas were tested for most optimal output. The highest test accuracy was achieved by the **Activation Formula:**
-
-y=11+e-z
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 014](https://user-images.githubusercontent.com/76467751/214298684-0166c45e-ce57-4399-b715-4a6ad5215c25.png)Where,
-
-z=β0+β1x1+β2x2+⋯+βnxn
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 015](https://user-images.githubusercontent.com/76467751/214298704-aa115087-064d-4055-96a2-525657d40700.png)
-
-1. Absenteeism:
-
-As absenteeism represents the number of leaves an employee takes, the output can neither be considered continuous nor binary. Hence, we divided the output into different classes making this a multiclass classification problem. We used the same **Logistic Regression** with the same activation formula as above. However, we had to **create dummies** of the output feature effectively giving us 4 output features for the four different classes.
-
-**Activation Formula:** y=11+e-z
-
-Where, z=β0+β1x1+β2x2+⋯+βnxn
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 016](https://user-images.githubusercontent.com/76467751/214298750-d0a51c78-4717-47ad-b9ae-7958d7beeb68.png)![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 017](https://user-images.githubusercontent.com/76467751/214298818-622c1a5d-42b1-46fd-95d8-3b288f8f9d85.png)
-
-1. Turnover:
-
-The turnover dataset has a binary output; however, the relation was found out to be non-linear. To tackle this, we employed **Multiple Logistic Regression of 3rd Degree**. Activation formula remains the same as for the model above, however the complexity increased due to the non-linear nature. We also found the accuracy to fluctuate due to higher degree and hence employed **Ridge Regularization** to combat those fluctuations to get the best overall accuracy.
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 018](https://user-images.githubusercontent.com/76467751/214298851-851b8946-9da8-4d54-8fd3-fad76dfd1e1c.png)
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 019](https://user-images.githubusercontent.com/76467751/214298872-f290de8f-65e9-4bd0-b194-5738741dd360.png)
-
-Finally, for training the models, we had to find the **most optimal hyperparameters, learning rates and repetitions**. To do this we used **Nvidia’s GPU acceleration** using **CUDA** to run all the models hundreds of thousands of times with varying parameters. The **Beta values** of the model with best test accuracy and least error distance was stored separately for future use.
-
-We also used **functions** to loop over **various values of n** and **learning rates** to find the pair with **best outputs**. A glimpse of the function created is as follows:
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 020](https://user-images.githubusercontent.com/76467751/214298905-3c2fb558-1513-4fe5-afa4-056d6bf00f6d.png)
-
-
-A summary of the above details is given in the table below:
-
-|S No.|Dataset Name|Output Type|Model Used|Details|
-| :-: | :-: | :-: | :-: | :-: |
-|1.|Salary|<p>Continuous</p><p>Number</p>|<p>Convolutional</p><p>` `Neural Network</p><p>(TensorFlow)</p><p>(Keras)</p>|<p></p><p>Hidden layer nodes: </p><p>**256 à128 à 64 à 32 à 16**</p><p>Connection Type: **Dense**</p><p>Optimizer: **adam**</p><p>Loss Metric: **Mean Square Error**</p><p>Max Epochs**: 100 (Early Stopping)**</p><p></p>|
-|2.|Attrition|Binary|<p>Logistic Regression</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: **50000**</p><p>Learning Rate: **0.0001**</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z***<br></p>|
-|3.|Absenteeism|Binary|<p>Multiclass </p><p>Logistic Regression</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: </p><p>Learning Rate:</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z*<br></p>|
-|4.|Turnover|Binary|<p>Logistic Regression </p><p>of 3rd Degree</p><p>(Ridge Regularization)</p>|<p></p><p>Max Iterations: </p><p>Learning Rate:</p><p>Regularization Constant: **0.2**</p><p>Activation Formula:* y=11+e-z*<br></p>|
-
-
-
-Technology Used – Score Predictor GUI
-
-Our project utilises html, CSS and JavaScript to build the front end. We have used PyCharm to make the server to host the website on our local machine. We used Bootstrap to build the basic GUI form which is minimalistic and yet elegant to view. After that we made our own JavaScript functions to calculate the scores. The scores have been calculated using the input values of the form and the beta values of the four models. 
-
-We do not import the model itself as importing the model would make the site heavy and incompatible with browsers incapable or running Python or .h5 compiled model files. Furthermore, we have made models using mathematical functions and hence making .h5 model file is not possible as that is a feature inbuilt into keras.
-
-Following are screenshots of our output form and GUI:
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 021](https://user-images.githubusercontent.com/76467751/214298923-f78a765b-b109-4104-ab77-c162680c7872.png)
-
-![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 022](https://user-images.githubusercontent.com/76467751/214298956-28fbd72f-dcd4-4957-b728-dcfcd8a9cefb.png)
 
 **Output Screenshots
 
