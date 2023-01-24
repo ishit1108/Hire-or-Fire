@@ -7,6 +7,8 @@
 
 Download our repositiory .zip file or clone the directory using git commands. Extract the zipped file and directly run app.py file to create a localhost server to run the web application.
 
+# Detailed Description About the Project
+
 ![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 001](https://user-images.githubusercontent.com/76467751/214295716-a55f5d12-b804-4f9a-b3b6-2bc915504987.png)
 
 Our project is a form of score predictor. Our project is a helping tool for hiring committees and HR department. It evaluates an employee over multiple factors. Our model is a culmination of four individual models. We run four different models, namely Attrition Classifier, Turnover Classifier, Absenteeism Classifier and Salary Predictor. We use different methods to calculate all four values. All individual values are graded out of ten while the overall score is graded out of 100.
