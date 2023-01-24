@@ -1,15 +1,32 @@
 
 # Introduction
 
+<img width="627" alt="image" src="https://user-images.githubusercontent.com/76467751/214302229-bbdabc03-ea1c-4ca5-ae88-03aa8d8a313a.png">
+
+# Installation
+
+Download our repositiory .zip file or clone the directory using git commands. Extract the zipped file and directly run app.py file to create a localhost server to run the web application.
+
 ![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 001](https://user-images.githubusercontent.com/76467751/214295716-a55f5d12-b804-4f9a-b3b6-2bc915504987.png)
 
 Our project is a form of score predictor. Our project is a helping tool for hiring committees and HR department. It evaluates an employee over multiple factors. Our model is a culmination of four individual models. We run four different models, namely Attrition Classifier, Turnover Classifier, Absenteeism Classifier and Salary Predictor. We use different methods to calculate all four values. All individual values are graded out of ten while the overall score is graded out of 100.
+
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/76467751/214302784-f280bf6b-e7a6-49b8-a73f-f3b24ca5a21c.png">
+
 
 We also perform abstraction as we only take the beta values of our models and use them to calculate scores on the GUI website. This makes the user interface light and easy to port and run. This also makes the backend independent. We can make updates to models without disturbing the running GUI.
 
 We have made a comprehensive tool to judge the performance of an employee or a fresher. The employer just needs to enter a few details about the employee and after that our project takes over and gives us a score. The score may be used to decide whether to retain or fire an existing employee or in the case of freshers’ weather to hire them or not.
 
 The following document is a detailed description of the working of our project along with info about the dataset and GUI working.
+
+<img width="621" alt="image" src="https://user-images.githubusercontent.com/76467751/214303207-e84f87a9-0d74-4db4-9c7c-27f348789a8b.png">
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/76467751/214303331-f0eacd63-c0f1-47ec-9564-a53146f698cd.png">
+<img width="622" alt="image" src="https://user-images.githubusercontent.com/76467751/214303520-f9c1a6c6-7967-4d5a-af51-ad8b5d70c403.png">
+<img width="622" alt="image" src="https://user-images.githubusercontent.com/76467751/214303678-f40c4ee7-6d35-4b3c-8e71-3a56e0824eae.png">
+<img width="620" alt="image" src="https://user-images.githubusercontent.com/76467751/214303789-039dcbea-d054-4698-b61d-4327d4b29e7e.png">
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/76467751/214303857-6be3dde8-1fbe-440f-84c5-c505e20d20fa.png">
+
 
 Technology Used – Pre-processing
 
