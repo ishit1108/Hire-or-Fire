@@ -1,4 +1,8 @@
-Introduction
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 021](https://user-images.githubusercontent.com/76467751/214298923-f78a765b-b109-4104-ab77-c162680c7872.png)
+
+![Aspose Words 0c5aa5b8-8363-4085-bc25-097709bdd400 022](https://user-images.githubusercontent.com/76467751/214298956-28fbd72f-dcd4-4957-b728-dcfcd8a9cefb.png)
+
+# Introduction
 
 Our project is a form of score predictor. Our project is a helping tool for hiring committees and HR department. It evaluates an employee over multiple factors. Our model is a culmination of four individual models. We run four different models, namely Attrition Classifier, Turnover Classifier, Absenteeism Classifier and Salary Predictor. We use different methods to calculate all four values. All individual values are graded out of ten while the overall score is graded out of 100.
 
